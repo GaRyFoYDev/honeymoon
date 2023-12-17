@@ -1,0 +1,65 @@
+html {
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-image: url('/honeymoon/images/background.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+
+
+
+
+form {
+    background-color: rgba(255, 255, 255, 0.5);
+    color: #1a1919;
+    text-align: center;
+    border-radius: 10px;
+    padding: 20px;
+    width: 40%;
+    height: 50vh;
+    margin: auto;
+    margin-top: 100px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.question-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.question label {
+    margin-bottom: 20px;
+    font-size: 1.1em;
+}
+
+.question input {
+    margin-bottom: 20px;
+    margin-right: 20px;
+}
+
+.nextButton {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+    border: none;
+    border-radius: 20px;
+    background-color: red;
+    color: white;
+    padding: 20px 30px;
+    font-size: 1.1em;
+    cursor: pointer;
+
+}
+
+.nextButton:hover {
+
+    background-color: rgb(27, 27, 196);
+
+}

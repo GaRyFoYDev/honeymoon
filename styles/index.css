@@ -1,0 +1,86 @@
+html {
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-image: url('/honeymoon/images/background.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+label {
+    cursor: pointer;
+}
+
+label:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+#welcome {
+    margin-top: -20px;
+    margin-bottom: 40px;
+    font-weight: 400;
+}
+
+.welcome-message {
+    background-color: rgba(255, 255, 255, 0.5);
+    color: #1a1919;
+    text-align: center;
+    border-radius: 10px;
+    padding: 20px;
+    width: 50%;
+    margin: auto;
+    margin-top: 100px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.welcome-message p {
+    font-size: 1.1em;
+}
+
+@keyframes heartbeat {
+    0% {
+        transform: scale(1);
+    }
+
+    25% {
+        transform: scale(1.1);
+    }
+
+    50% {
+        transform: scale(1);
+    }
+
+    75% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+h3 {
+    font-size: 1.2em;
+}
+
+
+
+
+#enterButton {
+    animation: heartbeat 2s infinite;
+    display: none;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    border: none;
+    border-radius: 10px;
+    background-color: red;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+
+}
