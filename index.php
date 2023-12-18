@@ -5,13 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/index.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Yellowtail&display=swap"
+        rel="stylesheet">
     <title>HoneyMoon - Accueil</title>
 </head>
 
 <body>
     <div class="welcome-message">
-        <h2>Bienvenue sur HoneyMoon</h2>
+        <h2 id='honey'>HoneyMoon</h2>
         <h3 id="welcome">Site de recommandation de lune de miel</h3>
         <h3>Comment ça marche ?</h3>
         <p>Répondez à quelques questions : Pour commencer, nous avons besoin de connaître vos préférences

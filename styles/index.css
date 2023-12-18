@@ -77,10 +77,55 @@ h3 {
     margin-right: auto;
     border: none;
     border-radius: 10px;
-    background-color: red;
+    background-color: #ff0066;
     color: white;
     padding: 10px 20px;
     font-size: 1em;
     cursor: pointer;
 
+}
+
+
+
+#honey {
+    font-family: 'Yellowtail', cursive;
+    color: #ffffff;
+    font-size: 54px;
+    text-align: center;
+    text-shadow:
+        0 0 10px #ff4da6,
+        0 0 20px #ff4da6,
+        0 0 30px #ff0066,
+        0 0 40px #ff0066,
+        0 0 70px #ff0066,
+        0 0 80px #ff0066,
+        0 0 100px #ff0066,
+        0 0 150px #ff0066;
+    animation: neon-animation 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes neon-animation {
+    from {
+        text-shadow:
+            0 0 5px #ff4da6,
+            0 0 10px #ff4da6,
+            0 0 15px #ff0066,
+            0 0 20px #ff0066,
+            0 0 35px #ff0066,
+            0 0 40px #ff0066,
+            0 0 50px #ff0066,
+            0 0 75px #ff0066;
+    }
+
+    to {
+        text-shadow:
+            0 0 10px #ff4da6,
+            0 0 20px #ff4da6,
+            0 0 30px #ff0066,
+            0 0 40px #ff0066,
+            0 0 70px #ff0066,
+            0 0 80px #ff0066,
+            0 0 100px #ff0066,
+            0 0 150px #ff0066;
+    }
 }
