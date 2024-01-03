@@ -21,6 +21,47 @@ const questions = {
     20: "Quelle serait votre destination de lune de miel idéale ?"
 };
 
+const destinations = ['Maldives',
+    'Antilles française',
+    'Polynésie Française',
+    'Grèce',
+    'Hawaï',
+    'France',
+    'Indonésie',
+    'Japon',
+    'Seychelles',
+    'Italie',
+    'Îles Fidji',
+    'Afrique du Sud',
+    'Thaïlande',
+    'Espagne',
+    'Nouvelle-Zélande',
+    'Émirats Arabes Unis',
+    'Maroc',
+    'États-Unis',
+    'Turquie',
+    'Île Maurice',
+    'Tanzanie',
+    'Islande',
+    'Croatie',
+    'Portugal',
+    'Îles Cook',
+    'Îles Grenadines',
+    'Mexique',
+    'Îles Caïmans',
+    'Suède',
+    'Belize',
+    'Antigua',
+    'Inde',
+    'Australie',
+    'Kenya',
+    'Cuba',
+    'La Réunion',
+    'Malaisie',
+    'Puerto Rico',
+    'Bahamas',
+    'Cap Vert',
+    'Haiti']
 
 // Variable pour suivre la question actuelle
 let currentQuestionIndex = 1;
@@ -46,11 +87,19 @@ function createQuestionElement(questionNumber) {
             questionContainer.appendChild(radioButton);
         }
     } else {
-        // Pour la question 20, utiliser un champ de texte
-        const textField = document.createElement('input');
-        textField.setAttribute('type', 'text');
-        textField.setAttribute('name', `question${questionNumber}`);
-        questionContainer.appendChild(textField);
+        // Pour la question 20, liste déroulante (select)
+        const selectField = document.createElement('select');
+        selectField.setAttribute('name', `question${questionNumber}`);
+
+        // Ajouter des options basées sur la constante 'destinations'
+        destinations.forEach(destination => {
+            const option = document.createElement('option');
+            option.value = destination;
+            option.textContent = destination;
+            selectField.appendChild(option);
+        });
+
+        questionContainer.appendChild(selectField);
     }
 
     // Ajouter un bouton "Suivant" ou "Soumettre"
@@ -73,9 +122,9 @@ function isCurrentQuestionAnswered(questionNumber) {
         const radioButtons = document.querySelectorAll(`input[name="question${questionNumber}"]`);
         return Array.from(radioButtons).some(radio => radio.checked);
     } else {
-        // Vérifier le champ de texte pour la question 20
-        const textField = document.querySelector(`input[name="question${questionNumber}"]`);
-        return textField.value.trim() !== '';
+        const selectField = document.querySelector(`select[name="question${questionNumber}"]`);
+        return selectField.value !== '';
+
     }
 }
 

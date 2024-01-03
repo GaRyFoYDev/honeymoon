@@ -1,5 +1,6 @@
-import csv
+#Ajout des données du sondage dans la bdd
 import sqlite3
+import csv
 
 # Connectez-vous à votre base de données SQLite
 conn = sqlite3.connect('../honeymoon.db')
@@ -7,7 +8,8 @@ cur = conn.cursor()
 
 # Créez une table (modifiez les types de colonnes selon vos données)
 cur.execute('''CREATE TABLE IF NOT EXISTS survey 
-               (date TEXT,
+               (id INTEGER PRIMARY KEY AUTOINCREMENT,
+                date TEXT UNIQUE,  -- Utilisez une contrainte unique sur une colonne pour garantir l'unicité
                 question1 INTEGER, 
                 question2 INTEGER, 
                 question3 INTEGER, 
@@ -30,17 +32,19 @@ cur.execute('''CREATE TABLE IF NOT EXISTS survey
                 question20 TEXT)''')
 
 # Ouvrez votre fichier CSV et insérez les données
-with open('../survey.csv', 'r', encoding='utf-8') as fichier_csv:
+with open('../csv/survey.csv', 'r', encoding='utf-8') as fichier_csv:
     reader = csv.reader(fichier_csv, delimiter=';')
     next(reader, None)  # Ignorez l'en-tête si votre CSV en a un
     for ligne in reader:
-        cur.execute('''INSERT INTO survey
-                    (date, question1, question2, question3, question4, question5,
-                     question6, question7, question8, question9, question10,
-                     question11, question12, question13, question14, question15,
-                     question16, question17, question18, question19, question20)
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)''', ligne)
+        try:
+            cur.execute('''INSERT INTO survey
+                        (date, question1, question2, question3, question4, question5,
+                         question6, question7, question8, question9, question10,
+                         question11, question12, question13, question14, question15,
+                         question16, question17, question18, question19, question20)
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)''', ligne)
+        except sqlite3.IntegrityError:
+            pass
 
-# Validez les changements et fermez la connexion
 conn.commit()
 conn.close()
