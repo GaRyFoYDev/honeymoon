@@ -2,7 +2,7 @@
 import sqlite3
 import csv
 
-# Connectez-vous à votre base de données SQLite
+# Connexion à la bdd
 conn = sqlite3.connect('../honeymoon.db')
 cur = conn.cursor()
 
