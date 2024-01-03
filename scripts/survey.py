@@ -1,4 +1,4 @@
-#Ajout des données du sondage dans la bdd
+# Ajout des données du sondage dans la bdd
 import sqlite3
 import csv
 
@@ -9,7 +9,6 @@ cur = conn.cursor()
 # Créez une table (modifiez les types de colonnes selon vos données)
 cur.execute('''CREATE TABLE IF NOT EXISTS survey 
                (id INTEGER PRIMARY KEY AUTOINCREMENT,
-                date TEXT UNIQUE,  -- Utilisez une contrainte unique sur une colonne pour garantir l'unicité
                 question1 INTEGER, 
                 question2 INTEGER, 
                 question3 INTEGER, 
@@ -38,11 +37,11 @@ with open('../csv/survey.csv', 'r', encoding='utf-8') as fichier_csv:
     for ligne in reader:
         try:
             cur.execute('''INSERT INTO survey
-                        (date, question1, question2, question3, question4, question5,
+                        (question1, question2, question3, question4, question5,
                          question6, question7, question8, question9, question10,
                          question11, question12, question13, question14, question15,
                          question16, question17, question18, question19, question20)
-                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)''', ligne)
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)''', ligne)
         except sqlite3.IntegrityError:
             pass
 
