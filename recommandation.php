@@ -4,10 +4,11 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-// Récupérer les données du formulaire ok
-// Enregistrer les données dans la bdd pour enrichir les recommandations futures ok
-// Récupérer la dernière entrée de la bdd correspondant au formulaire soumie dans le script python
-// Récupérer et afficher la recommandation
+// 1 - Récupérer les données du formulaire ok
+// 2 - Enregistrer les données dans la bdd pour enrichir les recommandations futures ok
+// 3 - Récupérer la dernière entrée de la bdd correspondant au formulaire soumis dans le script python
+// 4 - Récupérer et afficher la recommandation
+// 5 - Refaire étape 3 et 4 pour la deuxième reco item based
 // Améliorer l'affichage avec css
 
 // Initialisez un tableau pour stocker les données des questions
@@ -41,41 +42,67 @@ try {
     $command = 'venv/bin/python python_scripts/userRecommendation.py';
     exec($command);
 
-    // // Exécuter le script python item based recommendation 
-    // $command2 = 'venv/bin/python itemRecommendation.py';
-    // exec($command);
-
-
     // Récupérer les recommandations user based
     $query2 = "SELECT * FROM user_recommendations ORDER BY id DESC LIMIT 1";
-    $result2 = $bdd->query($query2);
+    $userReco = $bdd->query($query2);
 
-    if ($result2) {
-        $row = $result2->fetchArray(SQLITE3_ASSOC); // Récupère la première (et seule) ligne de résultat
+    if ($userReco) {
+        $row = $userReco->fetchArray(SQLITE3_ASSOC); // Récupère la première (et seule) ligne de résultat
 
         if ($row) {
             $reco1 = $row['reco1'];
             $reco2 = $row['reco2'];
             $reco3 = $row['reco3'];
 
-            echo "<b>Reco user based</b><br>";
+            echo "<b>Recommendation basée sur les utilisateurs qui partage vos préférences de voyages.</b><br>";
             echo "Reco 1: $reco1 <br>";
             echo "Reco 2: $reco2 <br>";
             echo "Reco 3: $reco3 <br>";
+
+            $userReco->finalize();
 
         } else {
             echo "Aucune donnée trouvée.";
         }
     } else {
-        echo "Erreur lors de l'exécution de la requête.";
+        echo "Erreur lors de l'exécution de la requête user reco.";
     }
 
-    $result2->finalize();
+
+    // Exécuter le script python user based recommendation 
+    $command2 = 'venv/bin/python python_scripts/itemRecommendation.py';
+    exec($command2);
+
+    // Récupérer les recommandations user based
+    $query3 = "SELECT * FROM item_recommendations ORDER BY id DESC LIMIT 1";
+    $itemReco = $bdd->query($query3);
+
+    if ($itemReco) {
+        $row = $itemReco->fetchArray(SQLITE3_ASSOC); // Récupère la ligne de résultat
+
+        if ($row) {
+            $reco1 = $row['reco1'];
+            $reco2 = $row['reco2'];
+            $reco3 = $row['reco3'];
+
+            echo "<b>Recommendation basée sur votre destination idéale.</b><br>";
+            echo "Reco 1: $reco1 <br>";
+            echo "Reco 2: $reco2 <br>";
+            echo "Reco 3: $reco3 <br>";
+
+            $itemReco->finalize();
+
+        } else {
+            echo "Aucune donnée trouvée.";
+        }
+    } else {
+        echo "Erreur lors de l'exécution de la requête item reco.";
+    }
+    
     $bdd->close();
 
 } catch (Exception $e) {
     echo "Une erreur s'est produite : " . $e->getMessage();
 }
-
 
 ?>

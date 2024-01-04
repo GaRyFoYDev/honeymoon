@@ -18,7 +18,7 @@ datas = cur.fetchall()
 # Parcourir et afficher les données
 matrix = []
 for data in datas:
-    # Récupérer uniquement les valeurs numériques
+    # Supprimer l'id
     matrix.append(list(data[1:]))
 
 
