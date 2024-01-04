@@ -12,7 +12,7 @@
 <body>
     <form id="form" action="recommandation.php" method="post">
     </form>
-    <script src="scripts/form.js"></script>
+    <script src="js_scripts/form.js"></script>
 </body>
 
 </html>

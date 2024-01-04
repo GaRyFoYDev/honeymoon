@@ -35,7 +35,7 @@
         <button id="enterButton">Entrez</button>
     </div>
 
-    <script src="scripts/index.js"></script>
+    <script src="js_scripts/index.js"></script>
 </body>
 
 </html>
