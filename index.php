@@ -12,20 +12,19 @@
 
 <body>
     <div class="welcome-message">
-        <h2 id='honey'>HoneyMoon</h2>
-        <h3 id="welcome">Site de recommandation de lune de miel</h3>
+        <div id=neon>
+            <h2 id='honey'>HoneyMoon</h2>
+            <h3 id="welcome">Recommandation de lune de miel</h3>
+        </div>
         <h3>Comment ça marche ?</h3>
-        <p>Répondez à quelques questions : Pour commencer, nous avons besoin de connaître vos préférences
-            et
-            intérêts.</p>
-        <p>Recevez des recommandations personnalisées : Basées sur vos réponses, nous vous proposerons les
-            destinations de lune de miel les plus adaptées à vos souhaits.</p>
-
+        <ol>
+            <li>Répondez à 20 questions permettant d'évaluer vos préférences de voyages.</li>
+            <li>Recevez des recommandations personnalisées pour votre lune de miel.</li>
+        </ol>
         <h3>Respect de la vie privée</h3>
-        <p>Votre vie privée est importante pour nous. Conformément au RGPD, nous utilisons vos choix pour améliorer
-            nos
-            services et aider d'autres utilisateurs.</br>
-            Vos données ne seront utilisées qu'avec votre consentement.
+        <p>Votre vie privée est importante pour nous. Conformément au RGPD,<br>
+            nous utilisons vos choix pour améliorer nos services et aider d'autres utilisateurs.</p>
+        <p>Vos données ne seront utilisées qu'avec votre consentement.
         </p>
         <p>Afin d'accéder au site, veuillez accepter nos conditions d'utilisation.</p>
         <label>

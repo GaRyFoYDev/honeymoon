@@ -72,20 +72,40 @@ function createQuestionElement(questionNumber) {
     questionContainer.classList.add('question-container');
     questionContainer.id = 'question-' + questionNumber;
 
+    const number = document.createElement('h3');
+    number.textContent = 'Question ' + questionNumber + '/20'
+    questionContainer.appendChild(number)
+    
     const questionLabel = document.createElement('label');
     questionLabel.textContent = questions[questionNumber];
     questionLabel.setAttribute('for', `question${questionNumber}`);
     questionContainer.appendChild(questionLabel);
 
+    const question = document.createElement('div');
+    question.classList.add('question');
+
     // Pour les questions 1 à 19, utiliser des boutons radio
     if (questionNumber < 20) {
         for (let i = 1; i <= 5; i++) {
+            
+            const radioContainer = document.createElement('div'); // Créer un conteneur pour le bouton radio et le label
             const radioButton = document.createElement('input');
+            
             radioButton.setAttribute('type', 'radio');
             radioButton.setAttribute('name', `question${questionNumber}`);
             radioButton.setAttribute('value', i);
-            questionContainer.appendChild(radioButton);
+
+            const label = document.createElement('label'); 
+            label.textContent = i;
+            label.setAttribute('for', `question${questionNumber}`);
+
+
+            radioContainer.appendChild(radioButton);
+            radioContainer.appendChild(label);
+            question.appendChild(radioContainer);
+            
         }
+        questionContainer.appendChild(question);
     } else {
         // Pour la question 20, liste déroulante (select)
         const selectField = document.createElement('select');
@@ -106,6 +126,7 @@ function createQuestionElement(questionNumber) {
     const isLastQuestion = questionNumber === Object.keys(questions).length;
     const nextButton = document.createElement('button');
     nextButton.textContent = isLastQuestion ? 'Soumettre' : 'Suivant';
+    nextButton.classList.add('nextButton');
     nextButton.onclick = function (event) {
         event.preventDefault();
         handleQuestionNavigation(questionNumber, isLastQuestion);
@@ -142,12 +163,12 @@ function handleQuestionNavigation(questionNumber, isLastQuestion) {
         currentQuestionIndex++;
         const nextQuestionContainer = document.getElementById('question-' + currentQuestionIndex);
         if (nextQuestionContainer) {
-            nextQuestionContainer.style.display = 'block';
+            nextQuestionContainer.style.display = 'flex';
         } else {
             // Créer la question suivante si elle n'existe pas déjà
             const newQuestionElement = createQuestionElement(currentQuestionIndex);
             document.getElementById('form').appendChild(newQuestionElement);
-            newQuestionElement.style.display = 'block';
+            newQuestionElement.style.display = 'flex';
         }
     } else {
         // Soumettre le formulaire

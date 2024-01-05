@@ -1,4 +1,4 @@
-#Ajout des données des destinations dans la bdd
+#Script de création de la table destination à partir du csv 
 import sqlite3
 import csv
 

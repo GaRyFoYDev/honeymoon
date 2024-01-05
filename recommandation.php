@@ -54,7 +54,7 @@ try {
             $reco2 = $row['reco2'];
             $reco3 = $row['reco3'];
 
-            echo "<b>Recommendation basée sur les utilisateurs qui partage vos préférences de voyages.</b><br>";
+            echo "<b>Recommendations basées sur les utilisateurs qui partage vos préférences de voyages.</b><br>";
             echo "Reco 1: $reco1 <br>";
             echo "Reco 2: $reco2 <br>";
             echo "Reco 3: $reco3 <br>";
@@ -85,7 +85,7 @@ try {
             $reco2 = $row['reco2'];
             $reco3 = $row['reco3'];
 
-            echo "<b>Recommendation basée sur votre destination idéale.</b><br>";
+            echo "<b>Recommendations basées sur votre destination idéale.</b><br>";
             echo "Reco 1: $reco1 <br>";
             echo "Reco 2: $reco2 <br>";
             echo "Reco 3: $reco3 <br>";
@@ -98,11 +98,32 @@ try {
     } else {
         echo "Erreur lors de l'exécution de la requête item reco.";
     }
-    
+
     $bdd->close();
 
 } catch (Exception $e) {
     echo "Une erreur s'est produite : " . $e->getMessage();
 }
 
+//Trouver comment réexecuter le code au rechargement de la partage
+//Terminer la mise en page de la recommandation
+//Prévoir un bouton  de retour à la page d'accueil
+// Si assez de temps offrir la possibilité aux user de télécharger sa reco en fichier txt
 ?>
+
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/form.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>HoneyMoon - Recommandations</title>
+</head>
+
+<body>
+    <!-- <script src="js_scripts/form.js"></script> -->
+</body>
+
+</html>

@@ -1,4 +1,4 @@
-# Ajout des données du sondage dans la bdd
+#Script de création de la table survey à partir du csv de sondage
 import sqlite3
 import csv
 
