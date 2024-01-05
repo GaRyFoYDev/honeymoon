@@ -3,7 +3,7 @@ html {
 }
 
 body {
-    background-image: url('/honeymoon/images/background.png');
+    background-image: url('../images/background.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -36,17 +36,18 @@ form {
     height: 100%;
 }
 
-.question{
+.question {
     display: flex;
     justify-content: space-between;
     width: 70%;
 }
+
 .question-container label {
     margin-bottom: 15px;
     font-size: 1.1em;
 }
 
-input{
+input {
     cursor: pointer;
 }
 
@@ -56,7 +57,7 @@ input{
     margin-top: 40px;
     border: none;
     border-radius: 20px;
-    background-color:#ff0066;
+    background-color: #ff0066;
     color: white;
     padding: 20px 30px;
     font-size: 1.1em;
