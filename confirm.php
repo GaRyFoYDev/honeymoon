@@ -90,7 +90,7 @@ $_SESSION['reco6'] = $reco6;
 <body>
     <div class="container">
         <div class="reco">
-            <h3>Recommendations basées sur les utilisateurs qui partage vos préférences de voyages.</h3>
+            <h3>Recommandations basées sur les utilisateurs qui partage vos préférences de voyages.</h3>
             <ol>
                 <li>
                     <?php echo $reco1; ?>
@@ -104,7 +104,7 @@ $_SESSION['reco6'] = $reco6;
             </ol>
         </div>
         <div class="reco">
-            <h3>Recommendations basées votre destination de lune de miel idéale.</h3>
+            <h3>Recommandations basées votre destination de lune de miel idéale.</h3>
             <ol>
                 <li>
                     <?php echo $reco4; ?>
@@ -119,7 +119,7 @@ $_SESSION['reco6'] = $reco6;
         </div>
         <div class="button-container">
             <a href='download_reco.php'>Télécharger votre recommandations</a>
-            <a href="form.php">Recommencer</a>
+            <a href="index.php">Recommencer</a>
         </div>
     </div>
 </body>
