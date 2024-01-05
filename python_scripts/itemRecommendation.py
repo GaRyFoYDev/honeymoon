@@ -4,7 +4,7 @@ from recommendation import Recommendations as reco
 
 
 # Connexion à la base de données
-conn = sqlite3.connect('honeymoon.db')
+conn = sqlite3.connect('../honeymoon.db')
 
 # Création d'un curseur
 cur = conn.cursor()
@@ -16,10 +16,11 @@ cur.execute("SELECT * FROM survey ORDER BY id DESC LIMIT 1")
 # Récupératon la destinatio choisi par user à la dernière question
 userDestinationChoice = cur.fetchall()
 userDestinationChoice = userDestinationChoice[0][-1]
-# print(userDestinationChoice)
+
 
 cur.execute("SELECT * FROM destinations")
 destinations = cur.fetchall()
+
 
 # Parcourir et afficher les données
 matrix = []
@@ -29,12 +30,12 @@ for destination in destinations:
 
 def getItem(matrix: list):
     for vector in matrix:
-        if vector[0].strip() == userDestinationChoice:
+        if vector[0].strip().lower() == userDestinationChoice.lower():
             return vector
 
 
 def get_reco(matrix):
-    theitem = theitem = getItem(matrix)
+    theitem = getItem(matrix)
     matrix.remove(theitem)
     others = matrix
 

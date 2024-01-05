@@ -20,7 +20,7 @@ cur.execute('''CREATE TABLE IF NOT EXISTS destinations
 
 # Ouvrez votre fichier CSV et insérez les données
 with open('../csv/destinations.csv', 'r', encoding='utf-8') as fichier_csv:
-    reader = csv.reader(fichier_csv, delimiter=',')
+    reader = csv.reader(fichier_csv, delimiter=';')
     next(reader, None)  
     for ligne in reader:
         try:

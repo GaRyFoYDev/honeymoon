@@ -38,11 +38,11 @@ try {
 
     // Exécuter le script python user based recommendation 
     $command = 'venv/bin/python python_scripts/userRecommendation.py';
-    exec($command);
+    shell_exec($command);
 
     // Exécuter le script python item based recommendation 
     $command2 = 'venv/bin/python python_scripts/itemRecommendation.py';
-    exec($command2);
+    shell_exec($command2);
 
     $bdd->close();
 
