@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <form id="form" action="recommandation.php" method="post">
+    <form id="form" action="reco.php" method="post">
     </form>
     <script src="js_scripts/form.js"></script>
 </body>
