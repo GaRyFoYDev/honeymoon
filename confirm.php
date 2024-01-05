@@ -27,12 +27,6 @@ try {
             $reco1 = $row['reco1'];
             $reco2 = $row['reco2'];
             $reco3 = $row['reco3'];
-
-            echo "<b>Recommendations basées sur les utilisateurs qui partage vos préférences de voyages.</b><br>";
-            echo "Reco 1: $reco1 <br>";
-            echo "Reco 2: $reco2 <br>";
-            echo "Reco 3: $reco3 <br>";
-
             $userReco->finalize();
 
         } else {
@@ -51,15 +45,9 @@ try {
         $row = $itemReco->fetchArray(SQLITE3_ASSOC); // Récupère la ligne de résultat
 
         if ($row) {
-            $reco1 = $row['reco1'];
-            $reco2 = $row['reco2'];
-            $reco3 = $row['reco3'];
-
-            echo "<b>Recommendations basées sur votre destination idéale.</b><br>";
-            echo "Reco 1: $reco1 <br>";
-            echo "Reco 2: $reco2 <br>";
-            echo "Reco 3: $reco3 <br>";
-
+            $reco4 = $row['reco1'];
+            $reco5 = $row['reco2'];
+            $reco6 = $row['reco3'];
             $itemReco->finalize();
 
         } else {
@@ -76,6 +64,16 @@ try {
 }
 
 
+// Sauvegarde des variables pour téléchargement
+session_start();
+$_SESSION['reco1'] = $reco1;
+$_SESSION['reco2'] = $reco2;
+$_SESSION['reco3'] = $reco3;
+$_SESSION['reco4'] = $reco4;
+$_SESSION['reco5'] = $reco5;
+$_SESSION['reco6'] = $reco6;
+
+
 ?>
 
 <!DOCTYPE html>
@@ -90,7 +88,40 @@ try {
 </head>
 
 <body>
-    <!-- <script src="js_scripts/form.js"></script> -->
+    <div class="container">
+        <div class="reco">
+            <h3>Recommendations basées sur les utilisateurs qui partage vos préférences de voyages.</h3>
+            <ol>
+                <li>
+                    <?php echo $reco1; ?>
+                </li>
+                <li>
+                    <?php echo $reco2; ?>
+                </li>
+                <li>
+                    <?php echo $reco3; ?>
+                </li>
+            </ol>
+        </div>
+        <div class="reco">
+            <h3>Recommendations basées votre destination de lune de miel idéale.</h3>
+            <ol>
+                <li>
+                    <?php echo $reco4; ?>
+                </li>
+                <li>
+                    <?php echo $reco5; ?>
+                </li>
+                <li>
+                    <?php echo $reco6; ?>
+                </li>
+            </ol>
+        </div>
+        <div class="button-container">
+            <a href='download_reco.php'>Télécharger votre recommandations</a>
+            <a href="form.php">Recommencer</a>
+        </div>
+    </div>
 </body>
 
 </html>

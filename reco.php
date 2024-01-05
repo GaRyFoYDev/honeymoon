@@ -53,9 +53,9 @@ try {
     echo "Une erreur s'est produite : " . $e->getMessage();
 }
 
-//Trouver comment réexecuter le code au rechargement de la partage
-//Terminer la mise en page de la recommandation
+//Trouver comment éviter soumission formulaire avec rechargement = redirection ok
+//Terminer la mise en page de la recommandation ok
 //Prévoir un bouton  de retour à la page d'accueil
-// Si assez de temps offrir la possibilité aux user de télécharger sa reco en fichier txt
+// Si assez de temps offrir la possibilité aux users de télécharger sa reco en fichier txt
 ?>
 
