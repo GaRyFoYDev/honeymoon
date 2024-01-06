@@ -9,7 +9,7 @@ $stmt = $conn->prepare("SELECT * FROM survey ORDER BY id DESC LIMIT 1");
 $stmt->execute();
 $result = $stmt->fetch(PDO::FETCH_ASSOC);
 //var_dump($result);
-$userDestinationChoice = $result['question20']; 
+$userDestinationChoice = $result['question20'];
 //var_dump($userDestinationChoice);
 
 //Sélection de la table destinations
@@ -26,11 +26,12 @@ foreach ($destinations as $destination) {
 //var_dump($matrix)
 
 #Récupérer le vecteur correspond à la destination idéla de user
-function getItem($matrix, $userDestinationChoice){
-    foreach ($matrix as $vector){
-        if(trim(strtolower($vector[array_key_first($vector)]))== strtolower($userDestinationChoice)){
+function getItem($matrix, $userDestinationChoice)
+{
+    foreach ($matrix as $vector) {
+        if (trim(strtolower($vector[array_key_first($vector)])) == strtolower($userDestinationChoice)) {
             return $vector;
-        
+
 
         }
     }
@@ -38,36 +39,37 @@ function getItem($matrix, $userDestinationChoice){
 
 //print_r(getItem($matrix,$userDestinationChoice));
 
-function get_itemReco($matrix,$userDestinationChoice) {
-    $theitem = getItem($matrix,$userDestinationChoice);
-    
+function get_itemReco($matrix, $userDestinationChoice)
+{
+    $theitem = getItem($matrix, $userDestinationChoice);
+
     $others = [];
-    foreach ($matrix as $item){
-        if ($item !== $theitem){
+    foreach ($matrix as $item) {
+        if ($item !== $theitem) {
             $others[] = $item;
         }
     }
     //var_dump($matrix);
     //var_dump($others);
-    
-   
+
+
 
     foreach ($others as $index => $item) {
         $item_similarity = Recommendations::cosine_similarity(array_slice($theitem, 1), array_slice($item, 1));
         $item['similarity'] = $item_similarity;
         $others[$index] = $item;
-        
+
     }
 
- 
+
     //print_r($others);
-    
+
     // Trier les autres par similarité décroissante
-    usort($others, function($a, $b) {
+    usort($others, function ($a, $b) {
         return $b['similarity'] <=> $a['similarity'];
     });
     // print_r($others);
-    
+
 
 
     $itemRecommendations = [];
@@ -79,8 +81,8 @@ function get_itemReco($matrix,$userDestinationChoice) {
             break;
         }
     }
-    return $itemRecommendations;    
+    return $itemRecommendations;
 }
 
-$itemRecommendations = get_itemReco($matrix,$userDestinationChoice);
+$itemRecommendations = get_itemReco($matrix, $userDestinationChoice);
 ?>
