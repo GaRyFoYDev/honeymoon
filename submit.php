@@ -1,4 +1,9 @@
 <?php
+session_start();
+if (!isset($_SESSION['consent'])) {
+    header('Location: index.php');
+    exit();
+}
 
 // // 1 - Récupérer les données du formulaire ok
 // // 2 - Enregistrer les données dans la bdd pour enrichir les recommandations futures ok

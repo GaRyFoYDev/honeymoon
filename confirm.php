@@ -1,4 +1,10 @@
 <?php
+session_start();
+if (!isset($_SESSION['consent'])) {
+    header('Location: index.php');
+    exit();
+}
+
 // 3 - Récupérer la reco user based
 // 4 - Récupérer la reco item based
 // 5 - Afficher les reco

@@ -1,3 +1,9 @@
+<?php
+session_start();
+
+//Réinitialisation du consentement au retour sur la page d'accueil
+unset($_SESSION['consent']);
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
