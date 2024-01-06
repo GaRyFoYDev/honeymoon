@@ -1,16 +1,16 @@
 <?php
-
-session_start();
+require 'user.php';
+require 'item.php';
 
 // Le contenu des recommandations
-$contenuReco = "Recommendations basées sur les utilisateurs qui partagent vos préférences de voyages:\n";
-$contenuReco .= "1. " . $_SESSION['reco1'] . "\n";
-$contenuReco .= "2. " . $_SESSION['reco2'] . "\n";
-$contenuReco .= "3. " . $_SESSION['reco3'] . "\n\n";
-$contenuReco .= "Recommendations basées sur votre destination de lune de miel idéale:\n";
-$contenuReco .= "1. " . $_SESSION['reco4'] . "\n";
-$contenuReco .= "2. " . $_SESSION['reco5'] . "\n";
-$contenuReco .= "3. " . $_SESSION['reco6'] . "\n";
+$contenuReco = "Recommandations basées sur les utilisateurs qui partagent vos préférences de voyages:\n";
+$contenuReco .= "1. " . $userRecommendations[0] . "\n";
+$contenuReco .= "2. " . $userRecommendations[1] . "\n";
+$contenuReco .= "3. " . $userRecommendations[2] . "\n\n";
+$contenuReco .= "Recommandations basées sur votre destination de lune de miel idéale:\n";
+$contenuReco .= "1. " . $itemRecommendations[0] . "\n";
+$contenuReco .= "2. " . $itemRecommendations[1] . "\n";
+$contenuReco .= "3. " . $itemRecommendations[2] . "\n";
 
 $nomFichier = "recommandations.txt";
 
@@ -21,5 +21,3 @@ header('Content-Disposition: attachment; filename="' . $nomFichier . '"');
 
 echo $contenuReco;
 
-session_unset();
-session_destroy();
