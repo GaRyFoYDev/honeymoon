@@ -22,7 +22,7 @@ label:hover {
 
 #welcome {
     font-family: 'Yellowtail', cursive;
-    margin-top: -5px; 
+    margin-top: -5px;
     font-weight: 400;
     font-size: 1.6rem;
 }
@@ -36,7 +36,7 @@ label:hover {
     text-align: center;
     border-radius: 10px;
     padding: 20px;
-    width: 50%;
+    width: 60%;
     margin: auto;
     margin-top: 100px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
@@ -108,9 +108,9 @@ h3 {
     margin-bottom: 0px;
     margin-top: 0px;
 
-    }
+}
 
-    
+
 
 
 #neon {
@@ -118,10 +118,10 @@ h3 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 50%;
+    width: 60%;
     margin: auto;
     padding: 15px;
-    height: 80px;
+    height: 15vh;
     border: 4px solid #fff;
     border-radius: 12px;
     box-shadow:
@@ -130,8 +130,38 @@ h3 {
         0 0 16px #ff0066,
         inset 0 0 16px #ff0066,
         0 0 32px #ff0066,
-        inset 0 0 32px #ff0066; 
+        inset 0 0 32px #ff0066;
+}
+
+
+@media (max-width: 768px) {
+    .welcome-message {
+        width: 80%;
+        align-items:center;
+    }
+}
+
+@media (max-width: 576px) {
+
+    body{
+        background-size: cover;
     }
 
+    
+    .welcome-message {
+        align-items:center;
+    }
 
-  
+    #neon{
+        width: 80%;
+        padding: 10px;
+    }
+
+    #honey{
+        font-size: 2rem;
+    }
+
+    #welcome{
+        font-size: 1.2rem;
+    }
+}
